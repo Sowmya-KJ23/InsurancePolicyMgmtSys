@@ -1,0 +1,37 @@
+services:
+  # Database for our Policy Service
+  postgres-db:
+    image: postgres:16
+    container_name: policy-db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: policydb
+    ports:
+      - "5432:5432"
+    networks:
+      - insurance-network
+
+  # Distributed Tracing 
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin-server
+    ports:
+      - "9411:9411"
+    networks:
+      - insurance-network
+
+  # Metrics Visualization
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana-dashboard
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      - insurance-network
+
+networks:
+  insurance-network:
+    driver: bridge
