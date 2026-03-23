@@ -1,4 +1,4 @@
-Microservices Distributed Systems Showcase 
+Microservices Distributed Systems Showcase: 
 This repository serves as a hands-on implementation of modern backend architecture patterns, focusing on high-throughput processing and deep observability.
 
 Status: Work in Progress (Active Development)
