@@ -5,10 +5,12 @@ services:
     container_name: policy-db
     environment:
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: policydb
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - insurance-network
 
@@ -20,26 +22,32 @@ services:
       - "9411:9411"
     networks:
       - insurance-network
+    # Metrics Visualization
+    #grafana:
+    #image: grafana/grafana:latest
+    #container_name: grafana-dashboard
+    #ports:
+    #  - "3000:3000"
+    #environment:
+    # - GF_SECURITY_ADMIN_PASSWORD=admin
+    #networks:
+    # - insurance-network
 
-  # Metrics Visualization
-  grafana:
-    image: grafana/grafana:latest
-    container_name: grafana-dashboard
-    ports:
-      - "3000:3000"
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-    networks:
-      - insurance-network
-
-  # Database for our Claims Service
+    # Database for our Claims Service
   mongodb:
     image: mongo:latest
     container_name: claims-db
     ports:
       - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
     networks:
       - insurance-network
+
+volumes:
+  postgres_data:
+  mongodb_data:
+
 
 networks:
   insurance-network:

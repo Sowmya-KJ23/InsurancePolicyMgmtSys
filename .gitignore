@@ -1,0 +1,13 @@
+# --- Infrastructure & Secrets ---
+.env
+*.log
+docker-data/
+
+# --- IDE Settings ---
+.vscode/
+.idea/
+*.swp
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
