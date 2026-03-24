@@ -32,6 +32,15 @@ services:
     networks:
       - insurance-network
 
+  # Database for our Claims Service
+  mongodb:
+    image: mongo:latest
+    container_name: claims-db
+    ports:
+      - "27017:27017"
+    networks:
+      - insurance-network
+
 networks:
   insurance-network:
     driver: bridge
