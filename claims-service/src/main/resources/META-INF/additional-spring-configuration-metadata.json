@@ -1,0 +1,9 @@
+{
+    "properties": [
+        {
+            "name": "services.policy-service.url",
+            "type": "java.lang.String",
+            "description": "A description for 'services.policy-service.url'"
+        }
+    ]
+}

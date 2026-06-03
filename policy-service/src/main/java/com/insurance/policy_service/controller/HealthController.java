@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthController {
     @GetMapping("/api/v1/health")
     public String check() {
-        return "Policy Service is LIVE on Java 21 (Free Stack Edition)";
+        return "Policy Service is LIVE on Java 21";
     }
 }
